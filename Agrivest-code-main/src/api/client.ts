@@ -16,7 +16,7 @@ async function request<T>(endpoint: string, options: RequestOptions = {}): Promi
   const { method = "GET", body, params } = options;
 
   // Build URL with optional query params
-  const url = new URL(`${BASE_URL}${endpoint}`);
+  const url = new URL(`${BASE_URL}${endpoint}`, window.location.origin);
   if (params) {
     Object.entries(params).forEach(([key, val]) =>
       url.searchParams.append(key, String(val))
