@@ -2,7 +2,7 @@
 // Base HTTP client for all backend requests.
 // All API files import from here — change the BASE_URL once to switch environments.
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
+const BASE_URL = import.meta.env.VITE_API_URL || "/api";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
