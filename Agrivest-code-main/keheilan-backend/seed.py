@@ -6,15 +6,11 @@
 # =============================================================================
 
 from datetime import datetime, timedelta
-from app import create_app
 from app.config.database import db
 
-app = create_app()
-
-
 def seed():
-    with app.app_context():
-        from app.models.alert import Alert
+    # Seeding logic
+    from app.models.alert import Alert
         from app.models.transaction import Transaction
         from app.models.investment import Investment
         from app.models.milestone import Milestone
@@ -353,4 +349,7 @@ def seed():
 
 
 if __name__ == "__main__":
-    seed()
+    from app import create_app
+    app = create_app()
+    with app.app_context():
+        seed()

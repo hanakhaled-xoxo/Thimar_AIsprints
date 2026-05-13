@@ -10,7 +10,7 @@ import os
 class Config:
     # PostgreSQL connection string — Railway auto-sets this when PostgreSQL plugin is added.
     # Fix: Railway provides "postgresql://" but SQLAlchemy needs "postgresql+psycopg2://"
-    _db_url = os.environ.get("DATABASE_URL", "sqlite:///keheilan.db")
+    _db_url = os.environ.get("DATABASE_URL", "sqlite:////tmp/keheilan.db")
     if _db_url.startswith("postgres://"):
         _db_url = _db_url.replace("postgres://", "postgresql+psycopg2://", 1)
     elif _db_url.startswith("postgresql://"):
