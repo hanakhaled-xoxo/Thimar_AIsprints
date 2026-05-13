@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, ShieldCheck, Cpu } from 'lucide-react';
+import { ArrowRight, TrendingUp, Cpu } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 export default function Landing() {

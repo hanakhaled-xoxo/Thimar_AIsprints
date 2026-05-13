@@ -8,7 +8,7 @@ import {
 import { useAuth } from "../context/AuthContext";
 import {
   classifyInvestor, rankDeals, explainDeal, narratePortfolio,
-  transcribeVoice, rewriteText, scoreDeal, detectAnomalies, chatWithAI
+  transcribeVoice, rewriteText, scoreDeal, detectAnomalies
 } from "../api/ai";
 
 type Tab = "profiler" | "scorer" | "ranker" | "explainer" | "narrator" | "voice" | "anomaly";
@@ -512,74 +512,7 @@ export default function AiInsights() {
           </div>
         )}
 
-        {/* ── 8. AI Chat ── */}
-        {activeTab === "chat" && (
-          <div className="bg-surface/40 backdrop-blur-md border border-white/5 rounded-2xl flex flex-col h-[600px] shadow-xl overflow-hidden">
-            <div className="flex items-center gap-4 p-6 border-b border-white/5 bg-surfaceHighlight/20">
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-                <MessageCircle size={24} className="text-indigo-500" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-textMain">Thimar AI Assistant</h3>
-                <p className="text-sm text-textMuted">Ask anything about the platform, deals, or your portfolio</p>
-              </div>
-            </div>
-            
-            <div className="flex-1 overflow-y-auto p-6 space-y-6">
-              {chatMessages.length === 0 && (
-                <div className="h-full flex flex-col items-center justify-center text-textMuted gap-4">
-                  <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center">
-                    <Bot size={40} className="text-white/20" />
-                  </div>
-                  <p>Start a conversation with Thimar AI</p>
-                </div>
-              )}
-              {chatMessages.map((m, i) => (
-                <div key={i} className={`flex gap-4 ${m.role === "user" ? "flex-row-reverse" : ""}`}>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${m.role === "user" ? "bg-surfaceHighlight text-textSecondary" : "bg-indigo-500/20 text-indigo-500"}`}>
-                    {m.role === "user" ? <User size={18} /> : <Bot size={18} />}
-                  </div>
-                  <div className={`max-w-[75%] p-4 rounded-2xl text-sm leading-relaxed ${
-                    m.role === "user" 
-                      ? "bg-primary text-background rounded-tr-none shadow-[0_0_15px_rgba(0,255,102,0.2)]" 
-                      : "bg-surfaceHighlight/50 text-textSecondary rounded-tl-none border border-white/5"
-                  }`}>
-                    {m.text}
-                  </div>
-                </div>
-              ))}
-              {loading && (
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-500 flex items-center justify-center shrink-0">
-                    <Bot size={18} />
-                  </div>
-                  <div className="max-w-[75%] p-4 rounded-2xl text-sm leading-relaxed bg-surfaceHighlight/50 text-textSecondary rounded-tl-none border border-white/5 flex items-center gap-2">
-                    <Loader2 size={16} className="animate-spin text-indigo-500" /> Thinking…
-                  </div>
-                </div>
-              )}
-            </div>
-            
-            <div className="p-4 bg-surfaceHighlight/30 border-t border-white/5">
-              <div className="relative flex items-center gap-3">
-                <input
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && !loading && handleChat()}
-                  placeholder="Ask Thimar AI…"
-                  className="flex-1 bg-background border border-white/10 rounded-full py-4 pl-6 pr-4 text-sm text-textMain focus:outline-none focus:border-primary transition-colors placeholder:text-textMuted"
-                />
-                <button 
-                  className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-background hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,102,0.4)] transition-all disabled:opacity-50 disabled:hover:scale-100" 
-                  onClick={handleChat} 
-                  disabled={loading || !chatInput.trim()}
-                >
-                  <Send size={18} className="mr-1" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+
       </div>
     </div>
   );

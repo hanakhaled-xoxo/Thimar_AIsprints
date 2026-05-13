@@ -13,7 +13,7 @@ const COLORS = ["#10b981", "#8b5cf6", "#06b6d4", "#f59e0b", "#f43f5e"];
 
 export default function Portfolio() {
   const { user } = useAuth();
-  const { t } = useLang();
+  const { } = useLang();
   const [summary, setSummary] = useState<PortfolioSummary | null>(null);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLive, setIsLive] = useState(false);
@@ -116,7 +116,7 @@ export default function Portfolio() {
                 </defs>
                 <XAxis dataKey="date" stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `EGP ${(v / 1000).toFixed(0)}k`} />
-                <Tooltip contentStyle={{ background: "#041B11", border: "1px solid #124d32", borderRadius: 12, fontSize: 13 }} formatter={(value: number) => [`EGP ${value.toLocaleString()}`]} />
+                <Tooltip contentStyle={{ background: "#041B11", border: "1px solid #124d32", borderRadius: 12, fontSize: 13 }} formatter={(value) => [`EGP ${(value as number).toLocaleString()}`]} />
                 <Area type="monotone" dataKey="value" stroke="#00FF66" strokeWidth={3} fill="url(#pv)" />
               </AreaChart>
             </ResponsiveContainer>
@@ -133,7 +133,7 @@ export default function Portfolio() {
                   <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={90} paddingAngle={3} stroke="none">
                     {pieData.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                   </Pie>
-                  <Tooltip contentStyle={{ background: "#041B11", border: "1px solid #124d32", borderRadius: 12, fontSize: 13 }} formatter={(v: number) => [`EGP ${v.toLocaleString()}`]} />
+                  <Tooltip contentStyle={{ background: "#041B11", border: "1px solid #124d32", borderRadius: 12, fontSize: 13 }} formatter={(v) => [`EGP ${(v as number).toLocaleString()}`]} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

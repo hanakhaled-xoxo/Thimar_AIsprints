@@ -14,7 +14,7 @@ const severityConfig: Record<Severity, { color: string; icon: React.ReactElement
 };
 
 export default function Notifications() {
-  const { t } = useLang();
+  const { } = useLang();
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [isLive, setIsLive] = useState(false);
   const [actionLoading, setActionLoading] = useState<number | null>(null);

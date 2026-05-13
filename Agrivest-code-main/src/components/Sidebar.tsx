@@ -25,7 +25,7 @@ const navItems: { section: LangKey; items: { to: string; icon: typeof LayoutDash
 export default function Sidebar() {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const { lang, toggleLang, t } = useLang();
+  const { toggleLang, t } = useLang();
 
   return (
     <aside className="fixed left-0 top-0 w-[260px] h-screen bg-surface/80 backdrop-blur-xl border-r border-white/5 flex flex-col p-6 z-40 rtl:left-auto rtl:right-0 rtl:border-r-0 rtl:border-l rtl:border-white/5 transition-colors duration-300">

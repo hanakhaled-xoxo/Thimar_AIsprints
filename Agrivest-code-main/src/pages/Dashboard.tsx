@@ -138,7 +138,7 @@ export default function Dashboard() {
                 <Tooltip
                   contentStyle={{ background: "#041B11", border: "1px solid #124d32", borderRadius: 12, fontSize: 13 }}
                   labelStyle={{ color: "#94a3b8" }}
-                  formatter={(value: number) => [`EGP ${value.toLocaleString()}`, "Value"]}
+                  formatter={(value) => [`EGP ${(value as number).toLocaleString()}`, "Value"]}
                 />
                 <Area type="monotone" dataKey="value" stroke="#00FF66" strokeWidth={3} fill="url(#colorValue)" />
                 <Area type="monotone" dataKey="invested" stroke="#64748b" strokeWidth={1} strokeDasharray="4 4" fill="none" />
