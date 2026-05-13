@@ -19,8 +19,6 @@ Flask-Cors==6.0.2
 # Server-side session support
 Flask-Session==0.8.0
 
-# PostgreSQL adapter — binary version requires no system dependencies
-psycopg2-binary==2.9.10
 
 # Google Gemini AI SDK (new package) — used for all 8 text-based AI features
 # (risk profiler, deal ranker, deal explainer, portfolio narrator,

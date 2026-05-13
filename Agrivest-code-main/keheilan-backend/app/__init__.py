@@ -46,10 +46,5 @@ def create_app():
     with app.app_context():
         from app.models import user, farm, deal, investment, milestone, transaction, alert  # noqa: F401
         db.create_all()
-        
-        # If database is empty, seed it automatically
-        if user.User.query.count() == 0:
-            from seed import seed
-            seed()
 
     return app

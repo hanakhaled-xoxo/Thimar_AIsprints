@@ -1,10 +1,18 @@
 from flask import Blueprint, request, jsonify, session
 from app import db
 from app.models.user import User
+from seed import seed
 
 auth_bp = Blueprint("auth_bp", __name__, url_prefix="/auth")
 
 VALID_ROLES = {"investor", "farmer", "admin"}
+
+
+# Seed database
+@auth_bp.route("/seed", methods=["POST"])
+def run_seed():
+    seed()
+    return jsonify({"message": "Database seeded"}), 200
 
 
 # Register a new user and store their session
