@@ -48,12 +48,5 @@ class Config:
     # Enable Flask debug mode and auto-reloader — set to False in production
     DEBUG = os.environ.get("FLASK_DEBUG", "True") == "True"
 
-    # Allow specific origins for CORS — wildcard '*' is incompatible with credentials (session cookies)
-    CORS_ORIGINS = [
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://localhost:5175",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5174",
-        "http://127.0.0.1:5175",
-    ]
+    # Allow specific origins for CORS
+    CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,https://thimar-agrifintech.vercel.app").split(",")
