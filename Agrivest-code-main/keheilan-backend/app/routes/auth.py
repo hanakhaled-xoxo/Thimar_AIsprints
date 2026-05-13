@@ -9,10 +9,11 @@ VALID_ROLES = {"investor", "farmer", "admin"}
 
 
 # Seed database
-@auth_bp.route("/seed", methods=["POST"])
+@auth_bp.route("/seed", methods=["GET", "POST"])
 def run_seed():
+    db.create_all()
     seed()
-    return jsonify({"message": "Database seeded"}), 200
+    return jsonify({"message": "Database setup and seeded successfully"}), 200
 
 
 # Register a new user and store their session

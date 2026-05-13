@@ -41,10 +41,10 @@ def create_app():
     app.register_blueprint(ai_bp)
 
     # ------------------------------------------------------------------ #
-    # Auto-Setup for Vercel / Demo Mode
+    # Health Check
     # ------------------------------------------------------------------ #
-    with app.app_context():
-        from app.models import user, farm, deal, investment, milestone, transaction, alert  # noqa: F401
-        db.create_all()
+    @app.route("/")
+    def health():
+        return "Keheilan Backend is LIVE", 200
 
     return app
